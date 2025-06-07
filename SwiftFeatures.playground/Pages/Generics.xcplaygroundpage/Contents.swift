@@ -47,9 +47,19 @@ func swapTwoDoubles(_ a: inout Double, _ b: inout Double) {
 
 /* მთავარი რაც აქ უნდა დაიმახსოროთ არის: a და b მნიშვნელობები ორივე უნდა იყოს ერთი ტიპის (რადგანაც Swift Type Safe ენაა და არ გრთავს ნებას მაგალითად String და Double მნიშვნელლობები გადაცვალო ერთმანეთში, ეს გამოიწვევს Compile-time error-ს*/
 
+/*შეამჩნევდით რომ სამივე ფუნქცია გავს ერთმანეთს მხოლოდ Type-ებია განსხვავებული, სწორედ აქ შემოდის Generic კოდის ძალა. შემოგთავაზებთ ერთ ფუნქციას რომელიც მუშაობს ყველა ტიპისთივის
+ */
 
+func swapTwoValues<T>(_ a: inout T, _ b: inout T) {
 
+    let temporaryA = a
+    a = b
+    b = temporaryA
+}
+// <T> -> Declares that this is a generic function.
+// T -> A generic placeholder for a data type.
 
+// T-> აქ წარმოადგენს ფლეისჰოლდერს. იგი შეიძლება იყოს ყველა ტიპის (Str,Int... custom type).. T - თავისთავად არაფერს გულისხმობს იმის გარდა რომ იგი წარმოადგენს ფუნქციაში შემავალი მნიშვნელობების ერთ და იგივე ტიპს, ანუ a და b, ორივე უნდა იყოს ერთი (T) ტიპის.
 
  // In-Out PARAMETERS
 /* თუ გჭირდება მცირე ინფორმაცია რას აკეთებს inout ფუნქცია:
