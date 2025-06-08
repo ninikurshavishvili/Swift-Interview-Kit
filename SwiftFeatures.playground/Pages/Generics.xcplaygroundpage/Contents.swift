@@ -53,7 +53,8 @@ func swapTwoDoubles(_ a: inout Double, _ b: inout Double) {
     b = temporaryA
 }
 
-/* მთავარი რაც აქ უნდა დაიმახსოროთ არის: a და b მნიშვნელობები ორივე უნდა იყოს ერთი ტიპის (რადგანაც Swift Type Safe ენაა და არ გრთავს ნებას მაგალითად String და Double მნიშვნელლობები გადაცვალო ერთმანეთში, ეს გამოიწვევს Compile-time error-ს*/
+/* მთავარი რაც აქ უნდა დაიმახსოროთ არის: a და b მნიშვნელობები ორივე უნდა იყოს ერთი ტიპის (რადგანაც Swift Type Safe ენაა და არ გრთავს ნებას მაგალითად String და Double მნიშვნელლობები გადაცვალო ერთმანეთში, ეს გამოიწვევს Compile-time error-ს
+ */
 
 /*შეამჩნევდით რომ სამივე ფუნქცია გავს ერთმანეთს მხოლოდ Type-ებია განსხვავებული, სწორედ აქ შემოდის Generic კოდის ძალა. შემოგთავაზებთ ერთ ფუნქციას რომელიც მუშაობს ყველა ტიპისთივის
  */
@@ -77,17 +78,41 @@ func swapTwoValues<T>(_ a: inout T, _ b: inout T) {
  ზოგადი ფუნქციების გარდა Swift საშუალებას გაძლევს განსაზღვრო, შენი საკუთარი Generic-ტიპები. ესენი არიან custom კლასები, სტრუქტურები, ენამები, რომლებსაც შეუძლიათ ემუშაონ ნებისმიერ TYPE-ს, როგორც Array და Dictionary.
  ამ ნაწილში გიჩვენებთ თუ როგორ დაწეროთ Generic კოლექციის ტიპი, სახელწოდებით -> Stack.
  
+ Stack - არის მონაცემთა სტრუქტურა, რომელიც მიყვება წესს "First in First out"(LIFO)
  Stack -> არის მნიშვნელობების დალაგებული მასივი (გავს array-ს), თუმცა ოპერაციების უფრო მეტი შეზღუდვა აქვს. მაგალიად: Array - საშუალებას იძლევა ელემენტების ჩამატების თუ წაშლის შესაძლებლობას მასივის ნებისმიერ ადგილას.
  თუმცა Stack - საშუალებას გაძლევს ახალი ელემენტი ჩაამატო მხოლოდ კოლექციის ბოლოში, ასევე წაშლის შემთხვევაშიც მხოლოდ ბოლო ელემენტის წაშლაა შესაძლებელი.
  */
 
 //მნიშვნელოვანია რომ:
 /*
-Stack-ის კონცეფციას ფართოდ იყენებს UINAvigation Controller კლასი
+Stack-ის კონცეფციას ფართოდ იყენებს UINAvigation Controller კლასი.
+ როდესაც იყენებ UINavigationController-ს ის მართავს შენს ეკრანებს ანუ viewController-ებს stack-ის გამოყენებით
  
+ მაგალითად:
+ წარმოიდგინე რომ აპლიკაცია იწყება ასე:
+ Stack: [HomeViewController]
+ 
+ გადახვედი home-იდან profile-ზე:
+ navigationController?.pushViewController(profileVC, animated: true)
+ 
+ ახლა შენი Stack- გახდება:
+ Stack: [HomeViewController, ProfileViewController]
+
+ ახლა დააჭირე back button-ს:
+ navigationController?.popViewController(animated: true)
+
+ დაბრუდნი საწყის კონტროლლერზე:
+ Stack: [HomeViewController]
+
+ [Home, Profile, Settings] -> [Home, Profile] -> [Home]
  */
 
+//მთავარი KEY მომენტი არის:
+/*
+pushViewController(_:animated:) → adds a view controller (top of stack)
 
+popViewController(animated:) → removes the top view controller
+*/
 
 
 
