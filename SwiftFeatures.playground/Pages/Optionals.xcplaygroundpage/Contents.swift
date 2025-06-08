@@ -2,6 +2,8 @@
 
 import Foundation
 
-var greeting = "Hello, playground"
+//Optionals
 
-//: [Next](@next)
+/*
+ 
+ */
