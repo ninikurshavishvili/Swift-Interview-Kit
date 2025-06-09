@@ -181,5 +181,42 @@ class Cat: Species {
 }
 
 
-// Method Requirements
+// Method Requirements (Mutating Method Requirements)
 
+/*
+ ცხადია პროტოკოლს (არამარტო პფოფერთების მიღება) ასევე შეუძლია მოითხოვოს, რომ შესაბამისმა ტიპებმა განახორციელონ კონკრეტული მეთოდები. ოღონდ მთლიანად მეთოდი თავისი ლოგიკით პროტოკოლში არ იწერება. უბრალოდ აცხადებ მეთოდს ამ პროტოკოლში.
+ */
+
+protocol SomeMethodProtocol {
+    func doSomething()
+}
+
+/*
+ 🌀 Mutating Method Requirements
+ value Type-ებში, (როგორიცაა Strucs ან enum), მეთოდებმა რომლებაც შეიძლება შეიცვალონ propert-ები, უნდა მოვნიშნოთ mutating keyword-ით. ასევე ხდება პროტოკოლების მოთხოვნებთან: თუ იყენებ ასეთ მეთოდს რომელიც შეიძლება შეიცვალოს, ისიც უნდა მონიშნო mutating keywork-ით.
+ 
+ ნებისმიერი სტრუქტურა ან ენამი რომელის შეცვლამაც self-ის ან ნებისმიერი property-ის შეცვლა შეიძლება გამოიწვიოს, იყენებს mutating-ს.
+ */
+
+protocol Togglable {
+    mutating func toggle()
+}
+
+enum SwitchState: Togglable {
+    case on, off
+
+    mutating func toggle() {
+        self = (self == .on) ? .off : .on
+    }
+}
+
+var light = SwitchState.off
+light.toggle()
+print(light) // now it's .on
+
+/**
+ 🔍 რატომ mutating?
+ მნიშვნელობის ტიპებში (structs/enums), როდესაც მეთოდის შიგნით ცვლით თვისებას, თქვენ ცვლით მთელ მნიშვნელობას , ამიტომ Swift მოითხოვს, რომ ის ნათლად მონიშნოთmutating . -ის გამოყენებით .
+
+თუ დაგავიწყდა mutating მაშინ მიიღებ compile time error-ს.
+ */
