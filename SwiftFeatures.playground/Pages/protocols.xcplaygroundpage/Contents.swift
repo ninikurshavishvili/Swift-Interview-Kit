@@ -56,3 +56,20 @@ struct Player: EditableProtocol {
 }
 
 
+// Static Property Requirements
+/*
+ 
+ static -> type-level
+ static - ნიშნავს, რომ property ან მეთოდი თავად ტიპს ეკუთვნის და არა ამ ტიპის კონკრეტულ instance-ს.
+ მაგალითად პროტოკოლის გარეშე static მუშაობს ასე:
+ 
+ struct Dog {
+     static var speciesName = "Canis familiaris"
+ }
+
+ print(Dog.speciesName) // წვდომისთვის Dog ობიექტის შექმნა არ გჭირდებათ, speciesName Dog ტიპთანაა დაკავშირებული და არა კონკრეტულ dog-თან.
+ */
+
+
+// Method Requirements
+
