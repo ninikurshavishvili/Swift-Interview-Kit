@@ -58,16 +58,69 @@ struct Player: EditableProtocol {
 
 // Static Property Requirements
 /*
- 
  static -> type-level
- static - ნიშნავს, რომ property ან მეთოდი თავად ტიპს ეკუთვნის და არა ამ ტიპის კონკრეტულ instance-ს.
+ static - ნიშნავს, რომ property ან მეთოდი ამ ტიპის კონკრეტულ instance-ს კი არ ეკუთნის არამედ ტიპს (სტრუქტურა, ენუმ) ეკუთნის. (მგონი უფრო მარტივად მისაწვდომია.?)
  მაგალითად პროტოკოლის გარეშე static მუშაობს ასე:
  
  struct Dog {
      static var speciesName = "Canis familiaris"
  }
-
  print(Dog.speciesName) // წვდომისთვის Dog ობიექტის შექმნა არ გჭირდებათ, speciesName Dog ტიპთანაა დაკავშირებული და არა კონკრეტულ dog-თან.
+ */
+
+// რას აკეთებს Static პროტოკოლებთან?
+
+protocol Species {
+    static var speciesName: String { get }
+}
+
+/*
+ …it means:
+ "Any type that adopts this protocol must have a type-level (static) property called speciesName."
+ "ნებისმიერ ტიპს რომელიც იღებს ამ პროტოკოლს, უნდა ჰქონდეს Type-level ფროფერთი სახელად speciesName."
+ */
+
+struct Dog: Species {
+    static let speciesName: String = "Canis familiaris"
+}
+
+// როდის გამოვიყენოთ Static პროტოკოლებთან?
+/*
+ უნდა გამოიყენო როდესაც ამ კონკრეტული ტიპის ყველა ინსტანსი იზიარებს ერთი და იგივე Value-ს ან Behavior-ს.
+ მაგალითად :
+ */
+
+/*
+ 1. Type Describtions for objects (like label, tag)
+ როდესაც ა
+ გაქვს აპლიკაცია მაგალითად რაიმე პროდუქტების, რომლებსაც გააჩნიათ სხვადასხვა კატეგორია მაგალითად (Book, Movie, Podcast).
+ */
+protocol MediaType {
+    static var typeName: String { get }
+}
+
+struct Book: MediaType {
+    static let typeName = "Book"
+}
+
+struct Movie: MediaType {
+    static let typeName = "Movie"
+}
+
+struct Podcast: MediaType {
+    static let typeName = "Podcast"
+}
+
+print(Book.typeName) // Book
+print(Movie.typeName) // Movie
+/*
+ 
+ */
+
+
+//რა ხდება თუ Class-იყენებ?
+/*
+ 
  */
 
 
