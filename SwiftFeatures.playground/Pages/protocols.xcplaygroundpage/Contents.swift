@@ -59,6 +59,9 @@ struct Player: EditableProtocol {
 // Static Property Requirements
 /*
  static -> type-level
+ ✅ Memory Trick:
+ "Static = shared across all (საერთოა ყველასთვის), like a label on the box. Instance = unique per object."
+ 
  static - ნიშნავს, რომ property ან მეთოდი ამ ტიპის კონკრეტულ instance-ს კი არ ეკუთნის არამედ ტიპს (სტრუქტურა, ენუმ) ეკუთნის. (მგონი უფრო მარტივად მისაწვდომია.?)
  მაგალითად პროტოკოლის გარეშე static მუშაობს ასე:
  
@@ -92,8 +95,7 @@ struct Dog: Species {
 
 /*
  1. Type Describtions for objects (like label, tag)
- როდესაც ა
- გაქვს აპლიკაცია მაგალითად რაიმე პროდუქტების, რომლებსაც გააჩნიათ სხვადასხვა კატეგორია მაგალითად (Book, Movie, Podcast).
+ როდესაც გაქვს აპლიკაცია მაგალითად რაიმე პროდუქტების, რომლებსაც გააჩნიათ სხვადასხვა კატეგორია მაგალითად (Book, Movie, Podcast).
  */
 protocol MediaType {
     static var typeName: String { get }
@@ -114,14 +116,69 @@ struct Podcast: MediaType {
 print(Book.typeName) // Book
 print(Movie.typeName) // Movie
 /*
- 
+ 2. Constants That Don't Depend on Instances
+ როდესაც აპლიკაციაში იყენებ რამდენიმე API-ს და გინდა რომ ყველა API მოდდელმა გამოაცხადოს საკუთარი URL. შეგიძლია შექმნა ერთი protocol-ი static ცვლადით. და შეგიძლია დააორგანიზო ყველა API call სუფთად და თავიდან აიცილო URL-ების გაჰარდკოდება.
  */
+protocol APIResource {
+    static var baseURL: String { get }
+}
+
+struct UserAPI: APIResource {
+    static let baseURL = "https://api.example.com/user"
+}
+
+struct ProductAPI: APIResource {
+    static let baseURL = "https://api.example.com/product"
+}
+
+URL(string: UserAPI.baseURL + "/profile")
+
+/*
+ 4. Reusability: TableView / CollectionView Cell Identifiers
+ მაგალითად ჩვენ ხშირად გვჭირდება reuse identifiers (სტრინგის სახით), რომლის mistype შეიძლება ადვილად მოხდეს.
+ და უფრო უსაფრთხო გზაა (ქვევით კოდში), ვიდრე პირდაპირ სტრინგი ჩაწერო "dafdefaw".
+ */
+protocol Reusable {
+    static var reuseIdentifier: String { get }
+}
+//Default implementation
+extension Reusable {
+    static var reuseIdentifier: String {
+        return String(describing: Self.self)
+    }
+}
+
+//using
+
+/*
+ class MyCell: UITableViewCell, Reusable {}
+
+ tableView.register(MyCell.self, forCellReuseIdentifier: MyCell.reuseIdentifier)
+
+ */
+
+
+
 
 
 //რა ხდება თუ Class-იყენებ?
 /*
+ თუ შენ ამუშავები კლასებს, შეგიძლია გამოიყენო როგორც static, iseve clas.
+ ✅ class keyword -> უფლებას გაძლევს ქვეკლასის overriding მოახდინო
+ ✅ static -> არ გაძლევს overriding-ის უფლებას
  
+ მაგრამ პროტოკოლში Static-ს მაინც სტანდარტულად იყენებ
+ 
+ protocol Species {
+     static var speciesName: String { get }
+ }
+
  */
+class Cat: Species {
+    class var speciesName: String {
+        return "Felis catus"
+    }
+}
 
 
 // Method Requirements
