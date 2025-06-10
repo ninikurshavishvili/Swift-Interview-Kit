@@ -57,4 +57,24 @@ if let realString = possibleString {
 
 // Unwrap Multiple Optionals at Once
 
+/*
+ ცხადია ასევე შეგიძლიათ რამდენიმე ოფშენალის ერთდროული unwrap.
+ 
+ თუ რომელიმე მაინც nil აღმოჩნდება მაშინ პირდაპირ გადავა კოდი else ბლოკში
+ */
 
+let message: String? = "helo"
+let favouriteNumber: Int? = 42
+
+if let message, let favouriteNumber {
+    print("message: \(message), favouritenumber: \(favouriteNumber)")
+} else {
+    print("one of them is nill.")
+}
+
+//Force Unwrap Swift Optionals
+
+/*
+ ოფშენალის force unwrap ნიშნავს, რომ შენ წვდები ოფშენალ მნიშვნელობას, მისი nil-ობაზე შემოწმების გარეშე.
+ ეს შეიძლება სასარგებლო იყოს იმ შემთხვევაში თუ 100% დარწმუნებული ხარ, რომ მნიშვნელობები ნილი არ არის, მაგრამ force unwrap არ არის კარგი პრაქტიკა და შეიძლება სახიფათო იყოს, რადგან თუ ნილი გაიპატა ეს runtime errors-ამოაგდებს.
+ */
