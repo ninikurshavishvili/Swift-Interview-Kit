@@ -132,3 +132,18 @@ if let roomCount = john.residence?.numberOfRooms {
 /*
  მნიშვნელოვანია, რომ Optional Chaining-ის გამოყენებისას დაიმახსოვროთ, რომ optional chaining-ის დროს დაბრუნებული მნიშვნელობა ყოველთვის იქნება Optional-ი (იქნება ეს ფროფერთები, მეთოდები თუ საბსკრიპტები).
  */
+
+// რატომ გამოვიყენოთ nil-Coalescing Operator:
+
+/*
+ nil-coalescing operator - unwrap-ს უკეთებს optional-ს და აბრუნებს მის მნიშვნელობას (არსებობის შემთხვევაში), ან აბრუნებს Default მნიშვნელობას რომელსაც ჩვენ გავუწერთ unwrap-ის ლოგიკაში.
+ 
+ nil-coalescing ძალიან გამოსადეგია ისეთ შემთხვევებში, როდესაც optional მნიშვნელობებს შეიძლება ნილის შემთხვევაში რაიმე default მნიშვნელობა მივანიჭოთ და ის ცარიელი აღარ იყოს. მაგალითად user input-ების დამუშაბევისთვის: თუ გაქვს შემთხვევა რომ უზერმა შეიძლება შეიყვანოს userName ან არ შეიყვანოს, თუ არ შეიყვანს მაშინ username default-ად გაუტოლდება რაიმე მნიშვნელობას მაგალითად "user31341341341".
+ 
+ ამ ლოგიკის დამუშავების სინტაქსი ძალიან მარტივია, მხოლოდ იყენებ ??. მაგალითად 'optional value' ?? 'my default Value' 
+ */
+
+let name: String? = nil
+let defaultName = "Anonymous"
+let unwrappedName = name ?? defaultName
+print(unwrappedName) // prints "Anonymous"
