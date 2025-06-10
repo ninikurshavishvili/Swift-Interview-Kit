@@ -82,3 +82,53 @@ if let message, let favouriteNumber {
 /**ამიტომ Force Unwrap-ის ნაცვლად ეცადეთ ყოველთვის გამოიყენოთ  Optional Binding ან the Nil-Coalescing Operator. და ზოგადად უფრო მიღებული პრაქტიკაა 'no force unwrap" :))* */
 
 
+// რატომ გამოვიყენოთ Optional Chaining in Swift.
+
+/*
+ Optional Chaining - არის პროცესი, რომელიც გამოიყენება property-ების, მეთოდების subscript-ების ოფშენალზე (on optional) გამოძახებისვის, რომელიც ამჟამად შეიძლება იყოს nil. თუ optional-ი შეიცავს მნიშვნელობას, მაშინ ფროფერთები, მეთოდები ან საბსკრიპტები წარმატებით გამოიძახება; თუ ოფშენალი ნილი აღმოჩნდა მაშინ მეთოდი ან საბსკტიპტი დააბრუნებს ნილს.
+ 
+ 
+ */
+
+class Person {
+    var residence: Residence?
+}
+
+class Residence {
+    var numberOfRooms = 1
+}
+
+//შევქმენით Person-ის ობიექტი "john", თუმცა არ მიგვითითებია რომ მას აქვს Residence, ამიტომაც რადგან Residence მნიშვნელობა Optional-ია, ის ავტომატურად nil-ს იღებს
+let john = Person()
+
+if let roomCount = john.residence?.numberOfRooms {
+    print("John's residence has \(roomCount) room(s).")
+} else {
+    print("Unable to retrieve the number of rooms.")
+}
+
+// ამიტომაც ლოგიკურად შესრულდება: Unable to retrieve the number of rooms.
+
+
+
+//ახლა ობიექტს მივანიჭეთ residence ინსტანსი. ანუ john.residence? აღარ უდრის nil-ს.
+john.residence = Residence()
+
+if let roomCount = john.residence?.numberOfRooms {
+    print("John's residence has \(roomCount) room(s).")
+} else {
+    print("Unable to retrieve the number of rooms.")
+}
+/**
+ მცირე BreakDown of terminology if you are new in swift things :)) :
+ 
+ john - არის Person კლასის instance
+ residence - არის Residence კლასის optional property
+ john.residence = Residence() - optional property-ის ინიციალიზაცია
+
+ */
+
+
+/*
+ მნიშვნელოვანია, რომ Optional Chaining-ის გამოყენებისას დაიმახსოვროთ, რომ optional chaining-ის დროს დაბრუნებული მნიშვნელობა ყოველთვის იქნება Optional-ი (იქნება ეს ფროფერთები, მეთოდები თუ საბსკრიპტები).
+ */
