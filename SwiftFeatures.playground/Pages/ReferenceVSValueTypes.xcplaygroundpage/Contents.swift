@@ -13,4 +13,4 @@ var greeting = "Hello, playground"
  */
 
 //Reference Type-ები არიან Class-ები და Closure-ები.
-
+//blaa
