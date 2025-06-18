@@ -25,6 +25,7 @@ class Dog {
 
 var dog1 = Dog(name: "Bobo")
 var dog2 = dog1           // No copy, just another reference to same object
+
 dog2.name = "Coco"        // Changes affect both
 
 print(dog1.name) // Coco ⚠️
@@ -49,3 +50,15 @@ print(user1.name) // Nini ✅
 print(user2.name) // Anna ✅
 
 // 👉 user1 and user2 are now two **independent** copies
+
+
+/*
+ | Feature            | Value Type (`struct`) | Reference Type (`class`)   |
+ | ------------------ | --------------------- | -------------------------- |
+ | Stored in          | Stack                 | Heap                       |
+ | Copy on assignment | ✅ Yes                | ❌ No (shared reference)   |
+ | Mutability         | Immutable by default  | Mutable                    |
+ | Inheritance        | ❌ Not supported      | ✅ Supported               |
+ | Performance        | Fast & lightweight    | Heavier (GC, ARC involved) |
+
+ */
