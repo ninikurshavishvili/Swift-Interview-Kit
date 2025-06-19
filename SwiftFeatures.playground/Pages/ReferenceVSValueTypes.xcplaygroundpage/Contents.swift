@@ -53,6 +53,14 @@ print(user2.name) // Anna ✅
 
 
 /*
+ ძირითადად აპლიკაციებში სტრუქტურების და კლასების გამოყენება შემდეგნაირად ლაგდება:
+ 
+ViewModel -> Class
+Model -> Struct
+View -> Struct in SwiftUI (class in UIKIT)
+ 
+ */
+/*
  | Feature            | Value Type (`struct`) | Reference Type (`class`)   |
  | ------------------ | --------------------- | -------------------------- |
  | Stored in          | Stack                 | Heap                       |
@@ -62,3 +70,4 @@ print(user2.name) // Anna ✅
  | Performance        | Fast & lightweight    | Heavier (GC, ARC involved) |
 
  */
+
