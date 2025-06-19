@@ -58,8 +58,9 @@ print(user2.name) // Anna ✅
 ViewModel -> Class
 Model -> Struct
 View -> Struct in SwiftUI (class in UIKIT)
- 
- */
+*/
+
+
 /*
  | Feature            | Value Type (`struct`) | Reference Type (`class`)   |
  | ------------------ | --------------------- | -------------------------- |
