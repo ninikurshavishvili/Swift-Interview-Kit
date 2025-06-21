@@ -7,10 +7,16 @@
 
 import SwiftUI
 
+//struct ContentView: View {
+//    var body: some View {
+//        UserViewControllerWrapper()
+//            .edgesIgnoringSafeArea(.all) // optional if you want it full-screen
+//    }
+//}
+
 struct ContentView: View {
     var body: some View {
-        UserViewControllerWrapper()
-            .edgesIgnoringSafeArea(.all) // optional if you want it full-screen
+        WeatherView()
     }
 }
 

@@ -17,3 +17,11 @@ struct DesignPatternsApp: App {
 }
 
 
+//@main
+//struct DesignPatternsApp: App {
+//    var body: some Scene {
+//        WindowGroup {
+//            WeatherView()
+//        }
+//    }
+//}
