@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+//MVC Example
 //struct ContentView: View {
 //    var body: some View {
 //        UserViewControllerWrapper()
@@ -14,6 +14,7 @@ import SwiftUI
 //    }
 //}
 
+//MVVM Example
 struct ContentView: View {
     var body: some View {
         WeatherView()

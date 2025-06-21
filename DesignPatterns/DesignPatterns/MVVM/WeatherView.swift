@@ -12,7 +12,7 @@ struct WeatherView: View {
     
     var body: some View {
         VStack(spacing: 20) {
-            Text("Temperature: \(viewModel.weather)")
+            Text("Temperature: \(String(format: "%.1f", viewModel.weather.temperature))°C")
                 .font(.title)
             Text("Condition: \(viewModel.weather.condition)")
                 .font(.headline)
