@@ -10,9 +10,33 @@
 		144D35632E058FB20065CC2C /* DesignPatterns.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DesignPatterns.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		144D35BB2E0681C80065CC2C /* Exceptions for "DesignPatterns" folder in "DesignPatterns" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				MVC/Helpers/MVC_info.txt,
+			);
+			target = 144D35622E058FB20065CC2C /* DesignPatterns */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		144D35BC2E0681C80065CC2C /* Exceptions for "DesignPatterns" folder in "Compile Sources" phase from "DesignPatterns" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = 144D355F2E058FB20065CC2C /* Sources */;
+			membershipExceptions = (
+				MVC/Helpers/MVC_info.txt,
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		144D35652E058FB20065CC2C /* DesignPatterns */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				144D35BB2E0681C80065CC2C /* Exceptions for "DesignPatterns" folder in "DesignPatterns" target */,
+				144D35BC2E0681C80065CC2C /* Exceptions for "DesignPatterns" folder in "Compile Sources" phase from "DesignPatterns" target */,
+			);
 			path = DesignPatterns;
 			sourceTree = "<group>";
 		};
