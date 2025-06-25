@@ -10,33 +10,9 @@
 		143B7B2D2E0BFDFC00A385CA /* DataPersistenceOptions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DataPersistenceOptions.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		143B7B472E0C02A500A385CA /* Exceptions for "DataPersistenceOptions" folder in "DataPersistenceOptions" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				information.txt,
-			);
-			target = 143B7B2C2E0BFDFC00A385CA /* DataPersistenceOptions */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-		143B7B482E0C02A500A385CA /* Exceptions for "DataPersistenceOptions" folder in "Compile Sources" phase from "DataPersistenceOptions" target */ = {
-			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
-			buildPhase = 143B7B292E0BFDFC00A385CA /* Sources */;
-			membershipExceptions = (
-				information.txt,
-			);
-		};
-/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		143B7B2F2E0BFDFC00A385CA /* DataPersistenceOptions */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				143B7B472E0C02A500A385CA /* Exceptions for "DataPersistenceOptions" folder in "DataPersistenceOptions" target */,
-				143B7B482E0C02A500A385CA /* Exceptions for "DataPersistenceOptions" folder in "Compile Sources" phase from "DataPersistenceOptions" target */,
-			);
 			path = DataPersistenceOptions;
 			sourceTree = "<group>";
 		};
