@@ -30,8 +30,26 @@ import SwiftUI
 func storeSampleUserDefaultsData() {
     UserDefaults.standard.set("Nini", forKey: "username")
     UserDefaults.standard.set(true, forKey: "isLoggedIn")
-    UserDefaults.standard.set(25, forKey: "userAge")
+    UserDefaults.standard.set(22, forKey: "userAge")
 }
+// ეს ფუნქცია ინახავს 3 key value=("Nini", true, 22) წყვილს.
+// UserDefaults.standard.set ინახავს მნიშვნელობებს userdefault-ის მონაცემთა ბაზაში, კონკრეტული key-ის ქვეშ.           თუ მნიშვნელობა არის nil, სისტემა შლის გასაღების არსებულ მნიშვნელობას.
+/*
+ UserDefaultsპირდაპირ მხოლოდ შემდეგი ტიპების შენახვა შეძლია:
+ String
+ Int
+ Bool
+ Double
+ Float
+ URL
+ Date
+ Data
+ Arrayდა Dictionary(მხოლოდ მაშნ თუ შეიცავს მხოლოდ ზემოთ ჩამოთვლილ ტიპებს)
+
+ ❌ მას არ შეუძლია custom ტიპების ან ობიექტების პირდაპირ შენახვა. თქვენ დაგჭირდებათ მათი კონვერტაცია Dataან Codable -ის გამოყენება.
+
+
+ */
 
 //Loads Data
 func loadSampleUserDefaultsData() {
@@ -62,3 +80,12 @@ struct UserDefaultsExampleView: View {
         .padding()
     }
 }
+
+/*
+ struct-ში ხდება შემდეგი რამ:
+ ვიყენებთ @AppStorage-ს - ის არის property wrapper SwiftUI-ში, და გამოიყენება UserDefault-ში შენახული მონაცემების წასაკითხად, რომელიც ავტომატურად გამოიძახება ვიუს განახლებისას ყოველ ჯერზე და მოაქვს განახლებული ინფორმაციები. ანუ ის აქტიურად აკვირდება UserDefault-ში არსებულ key-ებს და ანახლებს ინტერფეისს მომხმარებლისთვის.
+ 
+ მაგალითად @AppStorage("username") var username: String = "DefaultUser" ეს დააკვირდება "username" key-ს და დააკვირდება და დაიჭერს მის განახლებას ღილაკის ყოველ დაჭერაზე. [ისევე როგორც @AppStorage("isLoggedIn") var isLoggedIn: Bool = false "isLoggedIn" key-ს.] როგორც კი შეიცვლება
+ 
+ ⚠️თუმცა, @AppStorage - (writes Data) გიწერს დატას UserDefault-ში და ამის გამო ის არ არის დაცვული Storage-ი. ამიტომაც არასოდეს შეინახოთ მნიშვნელოვანი პერსონალური ინფორმაცია @AppStorage-ის გამოყენებით.
+ */
