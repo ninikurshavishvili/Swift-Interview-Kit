@@ -8,6 +8,7 @@
 // რა არის KeyChain
 
 /*
- whaat
+ რა არის KeyChain
+ 1.
  */
 
