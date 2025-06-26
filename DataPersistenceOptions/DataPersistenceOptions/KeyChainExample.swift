@@ -104,3 +104,28 @@ func loadKeyChains() {
     
     KeychainHelper.delete(forKey: "userPassword")
 }
+
+/*
+ 🔐 რა დაშიფვრის მეთოდს იყენებს KeyChain?
+ 
+ Apple - ასე პირდაპირ დაშიფვრის ალგორითმის არჩევის საშუალებას არ გაძლევს. ამის ნაცვლად KeyChain იყენებს, შემდეგ სექიურითი კომბინაციას : ✅ Hardware-level encryption + AES (Advanced Encryption Standard)
+ 
+ iOS მოწყობილობები იყენებენ AES-256 დაშიფვრას — ინდუსტრიის სტანდარტს, ძალიან ძლიერ დაშიფვრის ალგორითმს.
+ 
+ ჩვენი მონაცემები ინახება Keychain მონაცემთა ბაზაში , რომელიც დაშიფრულია Secure Enclave- ით დაცული გასაღებით (თუ თქვენს მოწყობილობას აქვს ასეთი).
+ */
+
+/*
+ ⚠️
+ KeyChain აქვს security layer-ები:
+ -----------------------------------------------
+ | Layer                                           | Explanation
+ | ---------------------------------------------------------------------------------------------------- |
+ | **AES-256**                                     | Used to encrypt the actual keychain data. It’s fast and secure.                                      |
+ | **Secure Enclave (iPhones with Touch/Face ID)** | Isolated hardware that safely stores encryption keys — even the OS can't access them directly.       |
+ | **Data Protection Classes**                     | You can choose if a key is available when the phone is unlocked, always, or only after first unlock. |
+ | **Biometrics & Passcode**                       | Tied into the encryption: access is controlled by Face ID, Touch ID, or passcode when needed.        |
+
+ 
+ -When you store something in the Keychain, iOS handles all the encryption, decryption, and secure storage for you.
+ */

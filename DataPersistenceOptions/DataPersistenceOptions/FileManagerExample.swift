@@ -31,3 +31,7 @@
  
  Temporary: This is for files that your app only needs temporarily. The system may delete these files when your app isn’t using them anymore.
  */
+
+//დირექტორიების შექმნა
+
+
