@@ -28,5 +28,78 @@
  მაგრამ არსებობს Wrapper-ებიც:
  KeychainSwift
  KeychainAccess
- ან შენი Custom ფუნქცია
+ შენი Custom ფუნქცია
  */
+// MARK: - გამოყენების მაგალითი
+/*
+ პირველი ინსტალაცია Swift Package Manager-ის მეშვეობით
+ In Xcode: File > Add Packages...
+ URL-ის ჩასმა: https://github.com/evgenyneu/keychain-swift
+ package-ის დამატება
+ */
+
+//მაგალითი 1: ფექიჯის გამოყენებით
+import KeychainSwift
+import Foundation
+import Security
+
+func keychainExample() {
+    let keychain = KeychainSwift()
+    
+    // შენახვა
+    keychain.set("my_secret_token", forKey: "authToken")
+    
+    // ამოღება (წაკითხვა)
+    let token = keychain.get("authToken")
+    
+    // წაშლა
+    keychain.delete("authToken")
+}
+
+
+//მაგალითი 2: შექმენით საკუთარი KeyChain helper კლასი
+
+class KeychainHelper {
+    static func save(_ value: String, forKey key: String) {
+        if let data = value.data(using: .utf8) {
+            let query: [String: Any] = [
+                kSecClass as String: kSecClassGenericPassword,
+                kSecAttrAccount as String: key,
+                kSecValueData as String: data
+            ]
+            SecItemDelete(query as CFDictionary) // Remove existing
+            SecItemAdd(query as CFDictionary, nil)
+        }
+    }
+
+    static func load(forKey key: String) -> String? {
+        let query: [String: Any] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrAccount as String: key,
+            kSecReturnData as String: true,
+            kSecMatchLimit as String: kSecMatchLimitOne
+        ]
+
+        var dataTypeRef: AnyObject?
+        let status = SecItemCopyMatching(query as CFDictionary, &dataTypeRef)
+
+        if status == errSecSuccess, let data = dataTypeRef as? Data {
+            return String(data: data, encoding: .utf8)
+        }
+        return nil
+    }
+
+    static func delete(forKey key: String) {
+        let query: [String: Any] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrAccount as String: key
+        ]
+        SecItemDelete(query as CFDictionary)
+    }
+}
+
+KeychainHelper.save("NiniPassword123", forKey: "userPassword")
+let password = KeychainHelper.load(forKey: "userPassword")
+print(password ?? "No password found")
+
+KeychainHelper.delete(forKey: "userPassword")
