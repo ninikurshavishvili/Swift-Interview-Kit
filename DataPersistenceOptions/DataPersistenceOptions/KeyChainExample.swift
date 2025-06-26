@@ -97,9 +97,10 @@ class KeychainHelper {
         SecItemDelete(query as CFDictionary)
     }
 }
-
-KeychainHelper.save("NiniPassword123", forKey: "userPassword")
-let password = KeychainHelper.load(forKey: "userPassword")
-print(password ?? "No password found")
-
-KeychainHelper.delete(forKey: "userPassword")
+func loadKeyChains() {
+    KeychainHelper.save("NiniPassword123", forKey: "userPassword")
+    let password = KeychainHelper.load(forKey: "userPassword")
+    print(password ?? "No password found")
+    
+    KeychainHelper.delete(forKey: "userPassword")
+}
