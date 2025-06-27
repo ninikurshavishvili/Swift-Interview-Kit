@@ -60,3 +60,11 @@ class Gadget {
 }
 
 // ⚠️ Strong vs Weak vs Unowned — Quick Facts
+
+/*
+ 1. როგორც წესი, როცა property იქმნება ის დეფაულტად ძლიერი ბმით იქმნება (strong reference-ით)
+ 
+ 2. property - რომელიც მონიშნულია როგორც weak, ეს არ გაზრდის
+ 
+ 3. unowned - reference იკავებს შუალედურ პოზიციას, არც ძლიერი ბმა აქვს და არც optional-ია, 
+ */
