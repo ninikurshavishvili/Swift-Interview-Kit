@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-// რა არის ARC ზოგადა და როგორ მუშაობს ?
+// რა არის ARC
 
 /*
  Strong, weak, და unowned რეფერენსები სინამდვილეში დაკავშირებულია მემონი მენეჯმენტთან რასაც ეწოდება ARC.
@@ -22,16 +22,41 @@ import SwiftUI
  Memory management “just works” in Swift, and you do not need to think about memory management yourself. ARC automatically frees up the memory used by class instances when those instances are no longer needed.
  */
 
+// როგორ მუშაობს ARC?
 
-struct ContentView: View {
-    var body: some View {
-        VStack {
+/*
+ ყოველ ჯერზე, როცა ვქმნით კლასის ინსტანსს init() გამოყენებით, ARC ავტომატურად გამოყოფს გარკვეულ ადგილს მემორიში. ანუ უფრო კონკრეტულად რომ ვთქვათ, მეხსიერების ეს ნაწილი ინახავს [ინსტანსს value propertie-ებთან ერთად].
+ და როცა ინსტანსი აღარ იქნება საჭირო, გამოიძახება deinit() ფუნქცია რომელიც ასუფთავებს ამ ინსტანსის ადგილს მემორიში.
+ */
 
-        }
-        .padding()
+/*
+ ქვევით კოდის მაგალითი ეს არის ორი კლასის მაგალითი Person instance-ით. და Gadget instance-ით. Gadget ინსტანნს აქვს init მეთოდი, სადაც ის ასე ვთქვათ (sets) ინახავს Person ინსტანსის property-ის. და deinit სადაც ჩვენ დავინახავთ ინსტანსის დელოკაციას, რაც ნიშნავს, რომ ჩვენს შემთხვევაში ინფორმაციის შემცველი მეხსიერება თავისუფლდება.
+ */
+
+
+
+class Person {
+    let name: String
+    init(name: String) {
+        self.name = name
+        print("\(name) is being initialized")
+    }
+    var gadget: Gadget?
+    deinit {
+        print("\(name) is being deinitialized")
+    }
+}
+ 
+class Gadget {
+    let model: String
+    init(model: String) {
+        self.model = model
+        print("\(model) is being initialized")
+    }
+    var owner: Person?
+    deinit {
+        print("\(model) is being deinitialized")
     }
 }
 
-#Preview {
-    ContentView()
-}
+// ⚠️ Strong vs Weak vs Unowned — Quick Facts
