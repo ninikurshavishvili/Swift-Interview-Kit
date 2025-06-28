@@ -52,3 +52,13 @@ func runStrongReferenceExample() {
     s = nil // ❌ deinit will NOT be called because of strong retain cycle
 }
 
+
+/*
+ 
+ ზოგადი ცხრილი
+| Keyword   | Increases Retain Count? | Optional? | Causes Retain Cycle?     | Notes                            |
+| --------- | ----------------------- | --------- | ------------------------ | -------------------------------- |
+| `strong`  | ✅ Yes                   | ❌ No      | ✅ Yes (if cyclic)        | Default. Be cautious of cycles.  |
+| `weak`    | ❌ No                    | ✅ Yes     | ❌ No                     | Safe for two-way references.     |
+| `unowned` | ❌ No                    | ❌ No      | ❌ No (if used correctly) | Use when lifetime is guaranteed. |
+ */
