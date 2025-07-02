@@ -36,9 +36,16 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var isPressed = false
+    
     var body:some View {
-        VStack {
+        VStack(spacing: 30) {
+            Text("Overlay Example")
+                .font(.largeTitle)
+                .bold()
             
+            ZStack {
+                Image(systemName: "person.circle.fill")
+            }
         }
     }
 }
