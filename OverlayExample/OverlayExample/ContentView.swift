@@ -58,6 +58,25 @@ struct ContentView: View {
                         alignment: .bottomTrailing
                     )
             }
+            
+            Button(action: {
+                isPressed.toggle()
+            }) {
+                Text(isPressed ? "Pressed" : "Tap me")
+                    .padding()
+                    .foregroundStyle(.white)
+                    .background(isPressed ? Color.green : Color.purple)
+                    .cornerRadius(10)
+            }
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.black.opacity(0.5), lineWidth: 2)
+            )
+            
+            Spacer()
         }
+        .padding()
     }
 }
+
+
