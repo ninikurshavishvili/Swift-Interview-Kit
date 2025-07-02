@@ -57,6 +57,8 @@ struct ContentView: View {
                             .offset(x: 45, y: 45),
                         alignment: .bottomTrailing
                     )
+                //Text overlay on image:
+                //"🟢 ONLINE" is overlaid in the corner of the profile icon.
             }
             
             Button(action: {
@@ -72,6 +74,7 @@ struct ContentView: View {
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(Color.black.opacity(0.5), lineWidth: 2)
             )
+            //Border using overlay on button
             
             Spacer()
         }
