@@ -45,6 +45,18 @@ struct ContentView: View {
             
             ZStack {
                 Image(systemName: "person.circle.fill")
+                    .resizable()
+                    .frame(width: 150, height: 150)
+                    .foregroundStyle(.blue)
+                    .overlay(
+                        Text(" ONLINE ")
+                            .font(.caption)
+                            .padding(6)
+                            .background(Color.white)
+                            .cornerRadius(8)
+                            .offset(x: 45, y: 45),
+                        alignment: .bottomTrailing
+                    )
             }
         }
     }
