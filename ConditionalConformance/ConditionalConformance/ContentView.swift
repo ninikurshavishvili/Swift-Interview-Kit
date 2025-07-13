@@ -6,3 +6,5 @@
 //
 
 // რა არის Conditional Conformance (პირობითი შესაბამისობები)
+//some new changess..??qq
+
