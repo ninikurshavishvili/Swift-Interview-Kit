@@ -70,5 +70,7 @@ extension User: CustomStringConvertible {
  In Swift, conditional conformance allows generic types to conform to a protocol only when their generic parameters meet specific constraints. This avoids unnecessary protocol conformance and enables clean, reusable code. For example, you can make a generic view like GenericListView<T> display different behavior only if T conforms to CustomStringConvertible.
  */
 /*
- swift-ში conditional conformance (პირობითი შესაბამისობა) - საშუალებას აძლევს Generic ტიპებს, რომ შეესაბამებოდეს პროტოკოლს მხოლოდ გარკვეული შეზღუდვების გათვალისწინებით. ეს თავიდან აგვაცილებს არასაჭირო პროტოკოლის მიღებას. უზრუნველყოფს სუფთა, reusable კოდს. 
+ swift-ში conditional conformance (პირობითი შესაბამისობა) - საშუალებას აძლევს Generic ტიპებს, რომ შეესაბამებოდეს პროტოკოლს მხოლოდ გარკვეული შეზღუდვების გათვალისწინებით. ეს თავიდან აგვაცილებს არასაჭირო პროტოკოლის მიღებას. უზრუნველყოფს სუფთა, reusable კოდს.
  */
+
+
