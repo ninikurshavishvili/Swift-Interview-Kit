@@ -5,20 +5,11 @@
 //  Created by Nino Kurshavishvili on 19.07.25.
 //
 
-import SwiftUI
+// რა არის ButtonStyle
 
-struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
-    }
-}
+/*
+ ButtonStryle - არის პროტოკოლი SwiftUI-ში, რომელიც საშუალებას გაძლევს შექმნა შენი Custom დიზაინი ან ინტერაქციები ღილეკებისთვის.
+ შეგიძლია ერთი სტილი განსაზღვრო შენი button-ისთვის და შემდეგ დაადო ღილაკებს, როცა დაგჭირდება. ამით აღარ მოგიწევს სათითაოდ უცვალო ღილაკებს სტილები აპლიკაციაში
+ */
 
-#Preview {
-    ContentView()
-}
+// კოდის მაგალითი თუ როგორ გამოვიყენოთ. 
