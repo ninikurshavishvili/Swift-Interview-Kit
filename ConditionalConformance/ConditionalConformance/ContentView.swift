@@ -41,6 +41,27 @@ extension GenericListView where T: CustomStringConvertible {
     }
 }
 
+//ახლა Swift იყენებს DisplayText-ს მხოლოდ მაშინ როცა T-შეესაბამება და იღებს CustomStringConvertible პროტოკოლს, (მაგალითად str int ან custom ტიპისთვის).
 
 
+struct ContentView: View {
+    var body: some View {
+        VStack {
+            Text("Strings")
+                .font(.headline)
+            GenericListView(items: ["Apple", "blueberry", "cherry"])
+            
+            Text("Custom Models")
+                .font(.headline)
+            
+        }
+    }
+}
 
+struct User {
+    let name: String
+}
+
+extension User: CustomStringConvertible {
+    var description: String { name }
+}
