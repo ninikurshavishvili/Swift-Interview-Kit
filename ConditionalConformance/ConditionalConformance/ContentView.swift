@@ -14,7 +14,33 @@
 
 //მაგალითად, თუ გვაქვს რაიმე generic ტიპი და გვსურს, რომ ის შეესაბამებოდეს პროტოკოლს, მხოლოდ იმ შემთხვევაში, თუ T-ც შეესაბამება ამ პროტოკოლს. იმის ნაცვლად რომ force to always conform, უნდა დაწერო : extension SomeExtension: Someprotocol where T: Someprotocol { }
 
+// მოდი განვიხილოთ, რეალური კოსის მაგალითი. ვთქვათ გვინდა GenericListView კომპონენტის შექმნა აპლიკაციაში.
+
 import SwiftUI
+
+struct GenericListView<T> : View {
+    
+    let items: [T]
+    
+    var body: some View {
+        List(items.indices, id: \.self) { index in
+            Text(self.displayText(for: items[index]))
+        }
+    }
+    
+    func displayText(for item: T) -> String {
+        return "Generic item"
+    }
+}
+
+//ეს მუშაობს მაგრამ ძალიან Generic-არის, ამიტომ ახლა დავამატოთ conditional conformance რომ ვაჩვენოთ რელური value-ები, მხოლოდ იმ შემთხვევაში, როცა T : CustomStringConvertible.
+
+extension GenericListView where T: CustomStringConvertible {
+    func displayText(for item: T) -> String {
+        return item.description
+    }
+}
+
 
 
 
