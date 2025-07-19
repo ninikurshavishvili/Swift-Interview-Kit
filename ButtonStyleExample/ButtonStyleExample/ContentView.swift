@@ -57,3 +57,10 @@ struct ButtonStyleExampleView: View {
     ButtonStyleExampleView()
 }
 
+/*
+ "ButtonStyle is a SwiftUI protocol that helps create reusable, custom-styled buttons. You override the makeBody(configuration:) function to define how the button should appear and respond to user interaction. You then apply your style using .buttonStyle(MyStyle()) anywhere in your view hierarchy."
+ */
+
+/*
+ ButtonStyleარის SwiftUI პროტოკოლი, რომელიც ხელს უწყობს მრავალჯერადი გამოყენების, მორგებული სტილის ღილაკების შექმნას. თქვენ ცვლით ფუნქციას makeBody(configuration:), რათა განსაზღვროთ, თუ როგორ უნდა გამოჩნდეს ღილაკი და როგორ უნდა რეაგირებდეს მომხმარებლის ურთიერთქმედებაზე. შემდეგ თქვენ იყენებთ თქვენს სტილს .buttonStyle(MyStyle())თქვენი ხედვის იერარქიის ნებისმიერი წერტილის გამოყენებით.“
+ */
