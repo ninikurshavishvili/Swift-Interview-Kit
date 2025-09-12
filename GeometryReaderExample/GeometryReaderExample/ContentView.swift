@@ -25,6 +25,12 @@ import SwiftUI
  როდესაც ვიუს wraping-ს უკეთებ GeometryReader-ში (ანუ when u wrap view in GeomeetryReader), ის იღებს closure-ს, რომელიც გაწვდის GeometryProxy ობიექტს.
  
  GeometryProxy გაძლევს ინფორმაციას კონტეინერის ზომასა და პოზიციის შესახებ, და შეგიძლია გამოიყენო ეს ინფორმაცია რომ დაა-custum-ო ვიუების განლაგაბა თუ მდებარება...
+ 
+ GeometryProxy -> შეიცავს ინფორმაციას, როგორიცაა:
+ -> size
+ -> safeAreaInsets (safe area values (top, bottom, etc.)
+ -> frame(in:) პოზიცია global და local კოორდინატთა სივრცეში
+ 
  */
 struct ContentView: View {
     var body: some View {
