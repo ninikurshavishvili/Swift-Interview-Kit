@@ -31,6 +31,8 @@ import SwiftUI
  -> safeAreaInsets (safe area values (top, bottom, etc.)
  -> frame(in:) პოზიცია global და local კოორდინატთა სივრცეში
  
+ _____________!___________
+ GeometryReader იკევებს მთელ თaვისუფალ სივრცეს, თუ შეზღუდული არ არის. ამიტომ უმჯობესია მისი სხვა კონტეინერში (Vstack ან frame-ში მაგალითად) შეფუთვა.
  */
 struct ContentView: View {
     var body: some View {
