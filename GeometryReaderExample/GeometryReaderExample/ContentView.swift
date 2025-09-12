@@ -20,6 +20,11 @@ import SwiftUI
  -> ფარდობითი ზომის გამოსათვლელად, მაგალითად გახადო შვილობილი view მშობლის ზომის ნახევარი და ასე შემდგ..
  
  
+ როგორ მუშაობს:
+ 
+ როდესაც ვიუს wraping-ს უკეთებ GeometryReader-ში (ანუ when u wrap view in GeomeetryReader), ის იღებს closure-ს, რომელიც გაწვდის GeometryProxy ობიექტს.
+ 
+ GeometryProxy გაძლევს ინფორმაციას კონტეინერის ზომასა და პოზიციის შესახებ, და შეგიძლია გამოიყენო ეს ინფორმაცია რომ დაა-custum-ო ვიუების განლაგაბა თუ მდებარება...
  */
 struct ContentView: View {
     var body: some View {
