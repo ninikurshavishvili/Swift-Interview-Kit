@@ -57,7 +57,15 @@ struct ContentView: View {
 // ახსნა :
 
 /*
- GeometryReader გაძლევს "geometry"-ერთეულს,
+ GeometryReader გაძლევს "geometry"- საზომ ერთეულს (proxy)
+ 
+ geometry.size.width / geometry.size.height-> გაწვდის ინფორმაციას თავისუფალ space-ზე
+ 
+ ლურჯი ოთხკუთხედი დინამიურად შეიცვლის ზომას დივაისის ზომის მიხედვით. (ანუ სიმაღლის ნახევარი და სიგრძის მეოთხედი)
+ 
+ .position() modifier-ი გეხმარება ვიუს განლაგებაში, geometry value-ების გამოყენებით.
+ 
+ 
  */
 
 #Preview {
