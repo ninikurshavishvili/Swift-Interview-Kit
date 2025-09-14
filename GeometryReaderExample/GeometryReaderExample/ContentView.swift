@@ -34,12 +34,16 @@ import SwiftUI
  _____________!___________
  GeometryReader იკევებს მთელ თaვისუფალ სივრცეს, თუ შეზღუდული არ არის. ამიტომ უმჯობესია მისი სხვა კონტეინერში (Vstack ან frame-ში მაგალითად) შეფუთვა.
  */
+
+
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Text("Geometry Reader Info goes here...")
+        GeometryReader { geometry in
+            VStack {
+                Text("width: \(geometry.size.width, specifier: "%.0f")")
+                Text("width: \(geometry.size.height, specifier: "%.0f")")
+            }
         }
-        .padding()
     }
 }
 
