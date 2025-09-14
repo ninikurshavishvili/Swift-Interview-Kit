@@ -54,6 +54,12 @@ struct ContentView: View {
     }
 }
 
+// ახსნა :
+
+/*
+ GeometryReader გაძლევს "geometry"-ერთეულს,
+ */
+
 #Preview {
     ContentView()
 }
