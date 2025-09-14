@@ -42,7 +42,14 @@ struct ContentView: View {
             VStack {
                 Text("width: \(geometry.size.width, specifier: "%.0f")")
                 Text("width: \(geometry.size.height, specifier: "%.0f")")
+                
+                Rectangle()
+                    .fill(Color.blue)
+                    .frame(width: geometry.size.width / 2,
+                           height: geometry.size.height / 4)
+                    .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }
 }
