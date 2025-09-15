@@ -1,0 +1,92 @@
+//
+//  ContentView.swift
+//  GeometryReaderExample
+//
+//  Created by Nino Kurshavishvili on 12.09.25.
+//
+
+import SwiftUI
+
+
+
+//რა არის GeometryReader SwiftUI-ში?
+
+/*
+ GeometryReader - არის SwiftUI-ს container view, რომელიც იძლევა წვდომას Child ელემენტის ზომასა და პოზიციაზე, მშობელი ვიუს კორდინანტთა სივრციდან.
+ 
+ GeometryReader ძირითადად გამოიყენება:
+ -> responsive layout-ის შესაქმნელად (ანუ როცა ვიუები device ზომას ერგებიან)
+ -> ელემენტის დინამიურად განლაგება და პოზიციონირება
+ -> ფარდობითი ზომის გამოსათვლელად, მაგალითად გახადო შვილობილი view მშობლის ზომის ნახევარი და ასე შემდგ..
+ 
+ 
+ როგორ მუშაობს:
+ 
+ როდესაც ვიუს wraping-ს უკეთებ GeometryReader-ში (ანუ when u wrap view in GeomeetryReader), ის იღებს closure-ს, რომელიც გაწვდის GeometryProxy ობიექტს.
+ 
+ GeometryProxy გაძლევს ინფორმაციას კონტეინერის ზომასა და პოზიციის შესახებ, და შეგიძლია გამოიყენო ეს ინფორმაცია რომ დაა-custum-ო ვიუების განლაგაბა თუ მდებარება...
+ 
+ GeometryProxy -> შეიცავს ინფორმაციას, როგორიცაა:
+ -> size
+ -> safeAreaInsets (safe area values (top, bottom, etc.)
+ -> frame(in:) პოზიცია global და local კოორდინატთა სივრცეში
+ 
+ _____________!___________
+ GeometryReader იკევებს მთელ თaვისუფალ სივრცეს, თუ შეზღუდული არ არის. ამიტომ უმჯობესია მისი სხვა კონტეინერში (Vstack ან frame-ში მაგალითად) შეფუთვა.
+ */
+
+
+struct ContentView: View {
+    var body: some View {
+        GeometryReader { geometry in
+            VStack {
+                Text("width: \(geometry.size.width, specifier: "%.0f")")
+                Text("width: \(geometry.size.height, specifier: "%.0f")")
+                
+                Rectangle()
+                    .fill(Color.blue)
+                    .frame(width: geometry.size.width / 2,
+                           height: geometry.size.height / 4)
+                    .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        }
+    }
+}
+
+// ახსნა :
+
+/*
+ GeometryReader გაძლევს "geometry"- საზომ ერთეულს (proxy)
+ 
+ geometry.size.width / geometry.size.height-> გაწვდის ინფორმაციას თავისუფალ space-ზე
+ 
+ ლურჯი ოთხკუთხედი დინამიურად შეიცვლის ზომას დივაისის ზომის მიხედვით. (ანუ სიმაღლის ნახევარი და სიგრძის მეოთხედი)
+ 
+ .position() modifier-ი გეხმარება ვიუს განლაგებაში, geometry value-ების გამოყენებით.
+ 
+ 
+ */
+
+#Preview {
+    ContentView()
+}
+
+
+//მეტი დეტალი GeometryReader-ზე
+
+/*
+ არის closure რომელიც აბრუნებს GeometryProxy ობიექტს.
+ რომელსაც აქვს: size, safeAreaInsets, frame(in:)
+ 
+ GeometryReader { geometry in
+     Text("Frame: \(geometry.frame(in: .global).debugDescription)")
+ }
+
+დეფაულტად ის იყენებს მთელ თავისუფალ სივრცეს, ამიტომ თუ გინდა მისი შეზღუდვა .frame(width:height:)-ით უნდა შემოსაზღვრო.
+ 
+ ის გამოიყენება არა მხოლოდ ზომების არამედ პოზიციონირების ლოგიკის გასაწერად.
+ 
+ 
+ 
+ */
