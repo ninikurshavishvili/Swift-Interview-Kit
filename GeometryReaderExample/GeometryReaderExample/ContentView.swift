@@ -71,3 +71,20 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
+
+
+//მეტი დეტალი GeometryReader-ზე
+
+/*
+ არის closure რომელიც აბრუნებს GeometryProxy ობიექტს.
+ რომელსაც აქვს: size, safeAreaInsets, frame(in:)
+ 
+ GeometryReader { geometry in
+     Text("Frame: \(geometry.frame(in: .global).debugDescription)")
+ }
+
+ 
+ */
+// NOTE:
+
+// TODO: 
