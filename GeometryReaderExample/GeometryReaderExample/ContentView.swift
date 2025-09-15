@@ -83,8 +83,10 @@ struct ContentView: View {
      Text("Frame: \(geometry.frame(in: .global).debugDescription)")
  }
 
+დეფაულტად ის იყენებს მთელ თავისუფალ სივრცეს, ამიტომ თუ გინდა მისი შეზღუდვა .frame(width:height:)-ით უნდა შემოსაზღვრო.
+ 
+ ის გამოიყენება არა მხოლოდ ზომების არამედ პოზიციონირების ლოგიკის გასაწერად.
+ 
+ 
  
  */
-// NOTE:
-
-// TODO: 
